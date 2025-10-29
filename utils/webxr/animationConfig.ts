@@ -95,6 +95,14 @@ export function getLerpSpeed(preset: AnimationPreset): number {
   return Math.min(spring.tension / spring.friction / 10, 1);
 }
 
+/**
+ * Converts spring configuration to lerp speed approximation
+ * Higher tension = faster, higher friction = slower
+ */
+export function springConfigToLerpSpeed(springConfig: SpringConfig): number {
+  return Math.min(springConfig.tension / springConfig.friction / 10, 1);
+}
+
 export function updateFPS(fps: number): void {
   currentFPS = fps;
 }

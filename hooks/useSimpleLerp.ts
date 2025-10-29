@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { springConfigToLerpSpeed as convertSpringToLerp } from '@/utils/webxr/animationConfig';
 
 interface LerpConfig {
   speed: number; // Lerp speed multiplier (higher = faster)
@@ -64,11 +65,9 @@ export const useTripleLerp = (
   };
 };
 
-// Convert spring config to lerp speed approximation
-export const springConfigToLerpSpeed = (springConfig: {
-  tension: number;
-  friction: number;
-}) => {
-  // Approximate conversion: higher tension = faster, higher friction = slower
-  return Math.min(springConfig.tension / springConfig.friction / 10, 1);
-};
+/**
+ * Converts spring configuration to lerp speed approximation
+ * Re-exported from animationConfig for backward compatibility
+ * @deprecated Import from '@/utils/webxr/animationConfig' instead
+ */
+export const springConfigToLerpSpeed = convertSpringToLerp;
