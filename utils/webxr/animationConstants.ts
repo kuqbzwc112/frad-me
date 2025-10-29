@@ -1,11 +1,8 @@
-// Enhanced spring configurations for more dynamic animations
-export const SPRING_CONFIGS = {
-  slow: { tension: 180, friction: 20 }, // Enhanced gentle animations with more spring
-  normal: { tension: 280, friction: 28 }, // Enhanced standard animations with bouncy feel
-  fast: { tension: 450, friction: 35 }, // Enhanced quick responses with strong spring
-  bouncy: { tension: 320, friction: 22 }, // New config for extra bouncy effects
-  elastic: { tension: 400, friction: 25 }, // New config for elastic entrance effects
-} as const;
+// Spring configurations are now consolidated in animationConfig.ts
+// Import WEBXR_ANIMATION_CONFIG.springs instead of using this constant
+// This export is kept for backward compatibility but is deprecated
+import { WEBXR_ANIMATION_CONFIG } from './animationConfig';
+export const SPRING_CONFIGS = WEBXR_ANIMATION_CONFIG.springs;
 
 // Utility function to combine positions
 const addPositions = (

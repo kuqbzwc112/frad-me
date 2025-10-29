@@ -90,9 +90,21 @@ export function validateAnimationPreset(preset: string): AnimationPreset | false
 let currentFPS = 60;
 
 // Core animation functions
+
+/**
+ * Converts spring configuration to lerp speed approximation
+ * Higher tension = faster, higher friction = slower
+ */
+export function springConfigToLerpSpeed(springConfig: SpringConfig): number {
+  return Math.min(springConfig.tension / springConfig.friction / 10, 1);
+}
+
+/**
+ * Gets lerp speed for a given animation preset
+ */
 export function getLerpSpeed(preset: AnimationPreset): number {
   const spring = WEBXR_ANIMATION_CONFIG.springs[preset];
-  return Math.min(spring.tension / spring.friction / 10, 1);
+  return springConfigToLerpSpeed(spring);
 }
 
 export function updateFPS(fps: number): void {
