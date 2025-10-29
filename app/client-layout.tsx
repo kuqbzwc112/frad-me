@@ -7,8 +7,8 @@ import ErrorBoundary from '@/components/common/ErrorBoundary';
 import LayoutWrapper from '@/components/common/LayoutWrapper';
 import DotRing from '@/components/Mouse/DotRing';
 import MouseContextProvider from '@/contexts/Mouse/MouseContextProvider';
-import useXRDetect from '@/hooks/useXRDetect';
 import ThemeModeProvider from '@/contexts/Theme/ThemeModeProvider';
+import useXRDetect from '@/hooks/useXRDetect';
 
 const WebXR = dynamic(() => import('./webxr/page'), {
   ssr: false,

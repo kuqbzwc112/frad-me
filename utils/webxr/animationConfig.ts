@@ -8,6 +8,15 @@ export type Vec3 = readonly [number, number, number];
 export type AnimationPreset = 'slow' | 'normal' | 'fast' | 'bouncy' | 'elastic';
 export type QualityLevel = 'reduced' | 'normal' | 'high';
 
+/**
+ * Converts spring configuration to lerp speed
+ * Shared logic used by both getLerpSpeed and springConfigToLerpSpeed
+ * Formula: min(tension / friction / 10, 1)
+ */
+export function convertSpringToLerpSpeed(spring: SpringConfig): number {
+  return Math.min(spring.tension / spring.friction / 10, 1);
+}
+
 // Simplified animation configuration
 export const WEBXR_ANIMATION_CONFIG = {
   springs: {
@@ -92,7 +101,7 @@ let currentFPS = 60;
 // Core animation functions
 export function getLerpSpeed(preset: AnimationPreset): number {
   const spring = WEBXR_ANIMATION_CONFIG.springs[preset];
-  return Math.min(spring.tension / spring.friction / 10, 1);
+  return convertSpringToLerpSpeed(spring);
 }
 
 export function updateFPS(fps: number): void {
