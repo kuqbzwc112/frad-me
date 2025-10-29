@@ -46,12 +46,9 @@ export const workCardPositions = {
   hover: createAnimationPosition(0, 1, -2), // Increased forward movement for more noticeable hover effect
 } as const;
 
-export function createStaggeredDelay(
-  index: number,
-  baseDelay: number = 100,
-): number {
-  return index * baseDelay;
-}
+// Note: Stagger delay logic consolidated in animationConfig.ts
+// Re-export for backward compatibility
+export { getStaggerDelay as createStaggeredDelay } from './animationConfig';
 
 // Note: Interpolation functions removed as they're duplicated in
 // @/components/WebXR/shared/AnimationHelpers.tsx
